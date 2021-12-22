@@ -1,1 +1,11 @@
 # sf-chain
+
+# 1. set up blockchain application
+Make a directory for the project called sf-chain. Set up a project in node:
+$ mkdir sf-chain
+$ cd-chain
+$ npm init -y
+
+Install nodemon as a development dependency. Nodemon is a node engine with a live development server.
+$ npm i nodemon --save-dev
+
