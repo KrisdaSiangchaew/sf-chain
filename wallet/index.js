@@ -13,6 +13,19 @@ class Wallet {
             publicKey: ${this.publicKey}
             balance  : ${this.balance}`
     }
+
+    sign(dataHash) {
+        return this.keyPair.sign(dataHash)
+    }
+
+    static signTransaction(transaction, senderWallet) {
+        transaction.input = {
+            timestamp: Date.now(),
+            amount: senderWallet.balance,
+            address: senderWallet.publicKey,
+            signature: senderWallet.sign(ChainUtil.hash(transaction.outputs))
+        }
+    }
 }
 
 module.exports = Wallet;

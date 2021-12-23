@@ -240,7 +240,7 @@ static hash(timestamp, lastHash, data, nonce, difficulty) {
   return ChainUtil.hash(`${timestamp}${lastHash}${data}${nonce}${difficulty}`);
 }
 ```
-Ddo the same thing in the transaction class to create a hash for the transaction outputs. Head to transaction.js. Now within the sign function call from the sender wallet, make sure to create a hash for the transaction outputs, before we generate the signature:
+Do the same thing in the transaction class to create a hash for the transaction outputs. Head to transaction.js. Now within the sign function call from the sender wallet, make sure to create a hash for the transaction outputs, before we generate the signature:
 ```
 signature: senderWallet.sign(ChainUtil.hash(transaction.outputs))
 ```
