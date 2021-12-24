@@ -138,7 +138,53 @@ describe('Wallet', () => {
 $ npm run test
 ```
 
-# 5. 
+# 5. Get Transaction
+By giving each of users their own wallet, users of the application will have the ability to conduct transactions with each other, thus putting the cryptocurrency into action. Start in the index file of the app directory, where holds the main code for the interactive application:
+ - Go to app/index.js
+```
+...
+const Wallet = require('../wallet');
+const TransactionPool = require('../wallet/transaction-pool');
+
+...
+const wallet = new Wallet();
+const tp = new TransactionPool();
+
+...
+app.get('/transactions', (req, res) => {
+  res.json(tp.transactions);
+});
+```
+```
+$ npm run dev
+```
+- hit localhost:3001/transactions
+
+# 6. Post Transaction
+Create the equivalent method that actually adds new transactions to the transaction pool, in app/index.js:
+```
+app.post('/transact', (req, res) => {
+  const { recipient, amount } = req.body;
+  const transaction = wallet.createTransaction(recipient, amount, tp);
+  res.redirect('/transactions');
+});
+```
+```
+$ npm run dev
+```
+
+- Test a POST request in postman, with raw application/json set as the Body data. Use some json similar to this for the data:
+```
+{
+	"recipient": "foo-4dr3ss",
+	"amount": 50
+}
+```
+
+- Hit the endpoint a couple times
+
+
+
 
 
 
