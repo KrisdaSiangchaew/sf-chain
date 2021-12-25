@@ -14,7 +14,7 @@ describe('Wallet', () => {
 
         beforeEach(() => {
             sendAmount = 50
-            recipient = 'foo-r3c1p13nt'
+            recipient = 'r4nd-4ddr355'
             transaction = wallet.createTransaction(recipient, sendAmount, tp)
         })
 
