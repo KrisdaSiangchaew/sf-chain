@@ -49,5 +49,10 @@ describe('TransactionPool', () => {
         it('grabs valid transactions', () => {
             expect(tp.validTransactions()).toEqual(validTransactions)
         })
+
+        it('clears the transactions', () => {
+            tp.clear()
+            expect(tp.transactions).toEqual([])
+        })
     })
 })
